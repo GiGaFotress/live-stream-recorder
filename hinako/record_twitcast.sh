@@ -34,10 +34,10 @@ while true; do
 
   # Also record low resolution stream simultaneously as backup
   M3U8_URL="http://twitcasting.tv/$1/metastream.m3u8?video=1"
-  ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "$FNAME" > "$FNAME.log" 2>&1 &
+  ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "/home/centos/live-stream-recorder/savevideo/hinako/$FNAME" > "/home/centos/live-stream-recorder/savevideo/hinako/$FNAME.log" 2>&1 &
 
   # Start recording
-  ./livedl -tcas "$1" > "$FNAME.livedl.log" 2>&1
+  ./livedl -tcas "/home/centos/live-stream-recorder/savevideo/hinako/$1" > "/home/centos/live-stream-recorder/savevideo/hinako/$FNAME.livedl.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
