@@ -42,18 +42,18 @@ while true; do
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="youtube_${Title}_$(date +"%Y%m%d_%H%M%S")_${ID}.ts"
   # Also save the metadate to file
-  echo "$METADATA" > "$FNAME.info.txt"
+  echo "$METADATA" > "/home/centos/live-stream-recorder/savevideo/miu/$FNAME.info.txt"
 
   # Print logs
   echo "$LOG_PREFIX Start recording, metadata saved to \"$FNAME.info.txt\"."
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "$FNAME" > "$FNAME.log" 2>&1
+  # ffmpeg -i "$M3U8_URL" -codec copy -f mpegts "$FNAME" > "savevideo/miu/$FNAME.log" 2>&1
 
   # Use streamlink to record for HLS seeking support
-  streamlink --hls-live-restart --loglevel trace -o "$FNAME" \
-    "https://www.youtube.com/watch?v=${ID}" "$FORMAT" > "$FNAME.log" 2>&1
+  streamlink --hls-live-restart --loglevel trace -o "/home/centos/live-stream-recorder/savevideo/miu/$FNAME" \
+    "https://www.youtube.com/watch?v=${ID}" "$FORMAT" > "$FNAME" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
