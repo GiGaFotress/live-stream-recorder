@@ -32,7 +32,7 @@ while true; do
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  ffmpeg -i "$STREAM_URL" -codec copy -f mpegts "$FNAME" > "$FNAME.log" 2>&1
+  ffmpeg -i "$STREAM_URL" -codec copy -f mpegts "/home/centos/live-stream-recorder/savevideo/mea/$FNAME" > "/home/centos/live-stream-recorder/savevideo/mea/$FNAME.log" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
