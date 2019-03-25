@@ -1,4 +1,6 @@
 # Live Stream Recorder
+Fork from https://github.com/printempw/live-stream-recorder
+修改为自用版本
 等待添加b站独播判断
 等待添加多线程监控
 等待解决在脚本目录拉屎的日志自动清理
