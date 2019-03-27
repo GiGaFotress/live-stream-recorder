@@ -35,6 +35,9 @@ while true; do
 
   # Extract video id of live stream
   ID=$(echo "$METADATA" | sed -n '2p')
+  
+    #Savetitle
+  Title=$(echo "$METADATA" | sed -n '1p')
 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
   FNAME="youtube_${ID}_$(date +"%Y%m%d_%H%M%S").ts"
