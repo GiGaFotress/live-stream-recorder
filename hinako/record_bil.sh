@@ -27,12 +27,13 @@ while true; do
   done
 
   # Record using MPEG-2 TS format to avoid broken file caused by interruption
-  FNAME="stream_$(date +"%Y%m%d_%H%M%S").ts"
+  FNAME="bilibili_$(date +"%Y%m%d_%H%M%S").ts"
   echo "$LOG_PREFIX Start recording, stream saved to \"$FNAME\"."
   echo "$LOG_PREFIX Use command \"tail -f $FNAME.log\" to track recording progress."
 
   # Start recording
-  ffmpeg -use_wallclock_as_timestamps 1 -r 30  -i "$STREAM_URL" -codec copy -f mpegts "/home/centos/live-stream-recorder/savevideo/mea/$FNAME" > "/home/centos/live-stream-recorder/savevideo/mea/$FNAME.log" 2>&1
+    streamlink --hls-live-restart --loglevel trace -o "/home/centos/live-stream-recorder/savevideo/hinako/$FNAME" \
+    "$1" "$FORMAT" > "$FNAME" 2>&1
 
   # Exit if we just need to record current stream
   LOG_PREFIX=$(date +"[%Y-%m-%d %H:%M:%S]")
